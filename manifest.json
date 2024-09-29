@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Copy Link and Paste",
+  "version": "1.1",
+  "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "clipboardRead",
+    "contextMenus",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "commands": {
+    "copyWithLinkToCurrentPage": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+C",
+        "mac": "MacCtrl+Command+C"
+      },
+      "description": "Copy selected text with a link to the current page"
+    },
+    "copyWithLinkToClipboardURL": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "MacCtrl+Command+L"
+      },
+      "description": "Copy selected text with a link to the clipboard URL"
+    }
+  },
+  "icons": {
+    "16": "link_icon_16x16.png",
+    "48": "link_icon_48x48.png",
+    "128": "link_icon_128x128.png"
+  }
+}
